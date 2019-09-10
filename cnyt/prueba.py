@@ -50,9 +50,71 @@ class TestComplejo(unittest.TestCase):
         res=-0.7853981633974483
         self.assertEqual(r,res)
 
-    def test_matriz(self):
-      
+    def test_sumaVectores(self):
         self.assertEqual(Complejo.sumaVectores([(1,2)],[(2,3)]),[(3,5)])
+        
+    def test_restaVectores(self):
+        self.assertEqual(Complejo.restaVectores([(1,2)],[(2,3)]),[(-1,-1)])
+        
+    def test_MatSuma(self):
+        m1=[[(1,5),(10,2)],[(-3,5),(4,8)]]
+        m2=[[(1,5),(2,3)],[(0,1),(4,8)]]
+        r=[[(2,10),(12,5)],[(-3,6),(8,16)]]
+        res=Complejo.sumaMatriz(m1,m2)
+        self.assertEqual(r,res)
+    def test_MatInv(self):
+        m1=[[(1,5),(10,2)],[(-3,5),(4,8)]]
+        r=[[(-1,-5),(-10,-2)],[(3,-5),(-4,-8)]]
+        res=Complejo.matInversa(m1)
+        self.assertEqual(r,res)
+    def test_MatMulEsc(self):
+        m1=[[(1,5),(10,2)],[(-3,5),(4,8)]]
+        n=10
+        r=[[(10,50),(100,20)],[(-30,50),(40,80)]]
+        res= Complejo.productoEscalarMatriz(n,m1)
+        self.assertEqual(r,res)
+    def test_MatTras(self):
+        m1=[[(1,5),(10,2)],[(-3,5),(4,8)]]
+        r=[[(1,5),(-3,5)],[(10,2),(4,8)]]
+        res=Complejo.maTranspuesta(m1)
+        self.assertEqual(r,res)
+    def test_MatCon(self):
+        m=[[(1,5),(-3,5)],[(10,2),(4,8)]]
+        r=[[(1,-5),(-3,-5)],[(10,-2),(4,-8)]]
+        res= Complejo.matConjugada(m)
+        self.assertEqual(r,res)
+    def test_MatAdj(self):
+        m=[[(1,5),(-3,5)],[(10,2),(4,8)]]
+        r=[[(1,-5),(10,-2)],[(-3,-5),(4,-8)]]
+        res= Complejo.matAdjunta(m)
+        self.assertEqual(r,res)
+    def test_Accion(self):
+        v=[(0,9),(3,2),(1,5)]
+        m=[[(1,5),(-3,5)],[(10,2),(4,8)]]
+        r=[(-90, -18), (22, 58)]
+        res=Complejo.Accion(m,v)
+        self.assertEqual(r,res)
+    def test_NormaMat(self):
+        m=[[(3,0),(5,0)],[(2,0),(3,0)]]
+        r= 47**(1/2)
+        res=Complejo.matNorma(m)
+        self.assertEqual(r,res)
+    def test_DistMat(self):
+        m1=[[(3,0),(5,0)],[(2,0),(3,0)]]
+        m2 = [[(0,0),(1,0)],[(-1,0),(0,0)]]
+        r=6.557438524302
+        res=Complejo.distanciaMatrices(m1,m2)
+        self.assertEqual(r,res)
+    def test_Unitaria(self):
+        #m = [[(1,-2),(3,0)],[(0,2),(4,2)]]
+        m = [[(0,0),(1,0)],[(-1,0),(0,0)]]
+        res=Complejo.unitaria(m)
+        self.assertTrue(res)
+    def test_Hermitian(self):
+        m = [[(7,0),(6,5)],[(6,-5),(-3,0)]]
+        her=Complejo.hermitian(m)
+        self.assertTrue(her)
+        
 
 if __name__ == "__main__":
     unittest.main()

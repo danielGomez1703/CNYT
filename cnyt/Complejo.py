@@ -69,6 +69,8 @@ def Fase(real,imaginario):
 
     fase = math.atan2(imaginario,real)
     return fase
+def invertir (c):
+    return (-c[0],-c[1])
 
 
 #------------------------------------------------------------------------------------#
@@ -81,7 +83,6 @@ def restaVectores(vec1,vec2):
 
 def sumaVectores(vec1,vec2):
     res = []
-    print(vec1,vec2)
     for i in range(len(vec1)):
         res.append(Suma(vec1[i],vec2[i]))
     return res
@@ -137,62 +138,59 @@ def matInversa(matriz):
     return matriz
 
 def maTranspuesta (matriz):
-    resultado =[[0 for i in range (len(matA))] for j in range(len(matB))]
+    
+    resultado =[[(0,0) for i in range (len(matriz))] for j in range(len(matriz))]
     for i in range(len(matriz)):
-        for j in range(len(matriz[0])):
+        for j in range(len(matriz)):
             resultado[j][i]= matriz[i][j]
     return resultado
 
 def matConjugada(matriz):
     for i in range(len(matriz)):
         for j in range(len(matriz[0])):
-            matriz[i][j]= conjugado(matriz[i][j])
+            matriz[i][j]= Conjugado(matriz[i][j])
     return matriz
 
 def matAdjunta(matriz):
-
-    return maTranspuesta(matConjugada(matriz))
+    
+    return matConjugada(maTranspuesta(matriz))
 
 def Accion(matA,vec):
-    return multMatrices(matA,(maTranspuesta([vec])))
+    vectorResp=[]
+    for j in range(len(matA)):
+        fila=(0,0)
+        for k in range(len(matA[0])):
+            fila=Suma(fila,Producto(matA[j][k],vec[j]))
+        vectorResp.append(fila)
+    return vectorResp
+   #return multMatrices(matA,(maTranspuesta([vec])))
 
 def matNorma(Mat):
-    return (ProductoInterno(Mat,Mat)[0])**2
-
+    return (productoInterno(Mat,Mat)[0],productoInterno(Mat,Mat)[1])
 def distanciaMatrices(mat1,mat2):
-    matriz = sumaMatriz(mat1[i],matInversa(mat2[i]))
+    matriz = sumaMatriz(mat1,matInversa(mat2))
     distancia = matNorma(matriz)
     return distancia
 
 def identidad(n):
-    identidad = [[0 for x in range(len(Mat[0]))]for y in range(len(Mat))]
+    identidad = [[0 for x in range(n)]for y in range(n)]
     for i in range(n):
-        identidad[i][i]=1
+        identidad[i][i]=(1,1)
     return identidad
 
 
-def unitaria(mat):
-    if len(mat)!=len(mat[0]):
+def unitaria(matriz):
+    if len(matriz)!=len(matriz[0]):
         return False
-    fin = multMatrices(mat,mat)
-    return (identidad(len(mat[0]))==fin)
+    fin = multMatrices(matriz ,matAdjunta(matriz))
+    for i in range(len(fin)):
+        for j in range(len(fin[0])):
+            if ((i==j and fin[i][j][0]!=1 and fin[i][j][0]!=1) or (i!=j and fin[i][j][0]!=0 and fin[i][j][0]!=0)):
+                return False
+    return True
 
-def hermitian(Mat):
-    return (mat == matAdjunta(mat))
+def hermitian(mat):
+    ##print(matAdjunta(mat),'\n',mat)
+    return (matAdjunta(mat) == mat)
 
 
-def productoTensor(mat1,mat2):
-    for x in range(2,len(mat2)**2):
-        if len(mat2) % x == 0:
-            aux = x
-            break
-    res = [[] for _ in range(len(mat1)*len(mat2))]
-    for i in range(len(mat1)):
-        for l in range(len(mat1[i])):
-            a = mat1[i][l]
-            con = i * aux
-            for j in range(len(mat2)):
-                for k in range(len(mat2[j])):
-                    res[con].append(Producto(a,mat2[j][k]))
-                con+=1
-    return res
