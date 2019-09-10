@@ -53,19 +53,6 @@ class TestComplejo(unittest.TestCase):
     def test_matriz(self):
       
         self.assertEqual(Complejo.sumaVectores([(1,2)],[(2,3)]),[(3,5)])
-##        self.assertEqual(Complejo.inversoVector((5,5)),(-5,-5))
-##        self.assertEqual(Complejo.sumaMatriz([[1,2,3],[2,3,4]],[[1,2,3],[2,3,4]]),[[(2, 0), (4, 0), (6, 0)], [(4, 0), (6, 0), (8, 0)]])
-##       self.assertEqual(Complejo.restaM([[1,2,3],[2,3,4]],[[1,2,3],[2,3,4]]),[[(0, 0), (0, 0), (0, 0)], [(0, 0), (0, 0), (0, 0)]])
-##        self.assertEqual(Complejo.multiplicacionM([[1,2],[2,3]],[[2,3],[2,4]]),[[(6, 0), (11, 0)], [(10, 0), (18, 0)]])
-##        self.assertEqual(Complejo.multiplicacionMV([[1,1],[2,3]],[1,1]),[(2, 0), (5, 0)])
-##        self.assertEqual(Complejo.matInversa([[2,3,4]]),[[-2,-3,-4]])
-##        self.assertEqual(Complejo.maTranspuesta([[1,2],[2,3]]),[[1, 2], [2, 3]])
-##        self.assertEqual(Complejo.multiplicacionME([[1,1,1]],3),[[3,3,3]])
-##        self.assertEqual(Complejo.matConjugada([[1,1,1]]),[[1,1,1]])
-##        self.assertEqual(Complejo.matAdjunta([[1,2,3]]),[[1],[2],[3]])
-##        self.assertEqual(Complejo.matNorma([[1,2],[1,2],[1,2]]),3.872983346207417)
-##        self.assertEqual(Complejo.hermitian([[1,(0,1)],[(0,-1),1]]),True)
-##        self.assertEqual(Complejo.unitaria([[1,0],[0,1]]),True)
-   
+
 if __name__ == "__main__":
     unittest.main()
