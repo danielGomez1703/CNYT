@@ -1,4 +1,5 @@
 # CNYT
+
 # Repositorio CNYT
 
 Este repositorio contiene los trabajos y laboratorios de la materia ciencia y  tecnologia  de la escuala colombiana de ingenieria Julio Garavito.
@@ -39,16 +40,11 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
-### Pre-requisitos 📋
+### Pre-requisitos 
 
 Debe tener instalado en su computador Python en lo posible la version 3.7, lo cual lo puede hacer desde su pagina oficial y siguiendo los pasos de instalacion.
 
-### Instalación 🔧
-
-Para instalar y ejecutar esta libreria lo que debe hacer es ejecutar el IDLE de Python y desde ahí abrir los archivos para ejecutarlo.
-
-## Ejecutando las pruebas ⚙️
-
+## pruebas 
 Para ejecutar de manera correcta las pruebas lo que se necesita hacer es abrir el archivo Pruebas.py y ejecutarlas(f5).
 
 ### Prueba de producto escalar
