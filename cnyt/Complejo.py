@@ -190,7 +190,6 @@ def unitaria(matriz):
     return True
 
 def hermitian(mat):
-    ##print(matAdjunta(mat),'\n',mat)
     return (matAdjunta(mat) == mat)
 
 
