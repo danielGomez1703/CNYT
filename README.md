@@ -64,7 +64,36 @@ def test_producto_interno(self):
         resultado = Complex.productoInterno(Complex.sumaMatrices(mat1,mat2),mat3)
         self.assertEqual(resultado,[[1,-2],[3,4]])
 ```
-### Analice las pruebas end-to-end 🔩
+### Prueba de canicas
+```
+def test_canicas(self):
+        mat = [[(0,0),(0,0),(0,0),(0,0),(0,0),(1,0)],[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],[(0,0),(1,9),(0,0),(0,0),(0,0),(1,45)],[(0,0),(0,0),(0,0),(1,5),(0,0),(0,0)],[(0,0),(0,0),(1,1),(0,0),(0,0),(0,0)],[(1,10),(0,0),(0,0),(0,0),(1,8),(0,0)]]
+        estado = [(6,2),(2,3),(1,1),(5,1),(3,4),(10,1)]
+        resultado = Complejo.canicas(mat,estado,1)
+        self.assertEqual(resultado,[(10, 1), (0, 0), (-60, 472), (0, 26), (0, 2), (-43, 90)])
+
+```
+### Prueba de rendijas
+```
+def test_rendijas(self):
+        matriz = [[0,0,0,0,0,0,0,0],[0.5,0,0,0,0,0,0,0],[0.5,0,0,0,0,0,0,0],[0,0.33,0,1,0,0,0,0],[0,0.33,0,0,1,0,0,0],          [0,0.33,0.33,0,0,1,0,0],[0,0,0.33,0,0,0,1,0],[0,0,0.33,0,0,0,0,1]]
+        estado = [1,0,0,0,0,0,0,0]
+        resultado = Complejo.rendijas(2,matriz,estado,1)
+        self.assertEqual(resultado,[0.0, 0.0, 0.0, 0.165, 0.165, 0.33, 0.165, 0.165])
+
+```
+### Prueba de rendijas complejas
+```
+    def test_rendijas_complejas(self):
+        matriz = [[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],[(0.5,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],[(0.5,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)],[(0,0),(0.33,0),(0,0),(1,0),(0,0),(0,0),(0,0),(0,0)],[(0,0),(0.33,0),(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)],[(0,0),(0.33,0),(0.33,0),(0,0),(0,0),(1,0),(0,0),(0,0)],[(0,0),(0,0),(0.33,0),(0,0),(0,0),(0,0),(1,0),(0,0)],[(0,0),(0,0),(0.33,0),(0,0),(0,0),(0,0),(0,0),(1,0)]]
+        estado = [(1,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+        resultado = Complejo.rendijasComplejos(2,mat,estado)
+        self.assertEqual(resultado,[(0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.165, 0.0), (0.165, 0.0), (0.33, 0.0), (0.165, 0.0)])
+        
+
+```
+
+### Analice las pruebas end-to-end 
 
 Todas las pruebas realizadas son para hacer una comprobacion del correcto funcionamienito de todos los metodos realizados y poniendo en evidencia todas sus funcionalidades.
 
@@ -74,11 +103,11 @@ self.assertEqual(Complex.productoInterno(Complex.sumaMatrices(mat1,mat2),mat3),[
 
 Como podemos ver en la imagen la luz del lazer se distorciona en varios puntos generando asi este patron.
 
-## Construido con 🛠️
+## Construido con 
 
 * [Python](https://www.python.org/) - Python 3.7 - Usado para desarrollar la libreria.
 
-## Autores ✒️
+## Autores 
 
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
