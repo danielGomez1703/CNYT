@@ -74,6 +74,15 @@ def invertir (c):
 
 
 #------------------------------------------------------------------------------------#
+def productoVector(vec1,vec2):
+    res=[]
+    for i in range(len(vec1)):
+        c = (0,0)
+        for j in range(len(vec1)):
+            mul = producto(vec1[i],vec2[j])
+            c = suma(c,mul)
+        res.append(c)
+    return res
 
 def restaVectores(vec1,vec2):
     res = []
@@ -167,6 +176,7 @@ def Accion(matA,vec):
 
 def matNorma(Mat):
     return (productoInterno(Mat,Mat)[0],productoInterno(Mat,Mat)[1])
+
 def distanciaMatrices(mat1,mat2):
     matriz = sumaMatriz(mat1,matInversa(mat2))
     distancia = matNorma(matriz)
